@@ -19,7 +19,7 @@ DTG_PARAMS = {"criterion": ["gini"],"max_depth":range(1,10),
             "min_samples_leaf":range(1,5)}
 
 DTE_PARAMS = {"criterion": ["entropy"],"max_depth":range(1,10),
-            "min_samples_split": range(1,10),
+            "min_samples_split": range(2,10),
             "min_samples_leaf":range(1,5)}
 
 
@@ -48,3 +48,15 @@ ADA_PARAMS = {"base_estimator__criterion": ["gini", "entropy"],
                      "algorithm":["SAMME", "SAMME.R"],
                      "n_estimators": [1,2,50, 100, 500],
                  "learning_rate": [0.0001, 0.001, 0.01, 0.1,0.5,  1.0, 1.5]}
+
+
+model_param =   {
+    "decision_tree_gini": DTG_PARAMS,
+    "decision_tree_entropy": DTE_PARAMS,
+    "Random Forest": RF_PARAMS,
+    "Extra Trees": XT_PARAMS,
+    "Gradient Boosting":GBC_PARAMS,
+    "AdaBoost Classifier": ADA_PARAMS
+    
+} 
+

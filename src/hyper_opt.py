@@ -44,3 +44,16 @@ RFC_best = gsRFC.best_estimator_
 #Best score
 print("Best score:", gsRFC.best_score_)
 
+for model in model_dispatcher.models:
+    print(model_dispatcher.models[model])
+    mod = model_dispatcher.models[model]
+    mod_params = model_dispatcher.model_param[model]
+    gs_mod = GridSearchCV(mod, param_grid = mod_params, cv = kfold, scoring = "accuracy",
+                    n_jobs = 1, verbose = 1)
+    gs_mod.fit(X, y)
+    gs_best = gs_mod.best_estimator_
+    print("Best score:", gs_mod.best_score_)
+
+
+#for model in model_dispatcher.model_param.keys():
+    #print(model_dispatcher.model_param[model])
