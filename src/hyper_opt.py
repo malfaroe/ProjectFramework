@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 
 from sklearn.model_selection import GridSearchCV, cross_val_score, StratifiedKFold, learning_curve
 
-
+#Algorithms to work with
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.ensemble import ExtraTreesClassifier,GradientBoostingClassifier
