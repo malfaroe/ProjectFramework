@@ -43,5 +43,4 @@ RFC_best = gsRFC.best_estimator_
 
 #Best score
 print("Best score:", gsRFC.best_score_)
-print("Best parameters:", RFC_best)
 
