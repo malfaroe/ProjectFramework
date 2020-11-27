@@ -12,7 +12,7 @@ models =    {
 
 
 
-#Parameters for hyperparameter optimization
+#Parameters for hyperparameter optimization process
 
 DTG_PARAMS = {"criterion": ["gini"],"max_depth":range(1,10),
             "min_samples_split": range(2,10),
