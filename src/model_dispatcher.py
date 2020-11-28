@@ -6,7 +6,7 @@ models =    {
     "Random Forest": RandomForestClassifier(random_state = 42),
     "Extra Trees": ExtraTreesClassifier(random_state = 42),
     "Gradient Boosting":GradientBoostingClassifier(random_state = 42),
-    "AdaBoost Classifier": AdaBoostClassifier(random_state = 42)
+    "AdaBoost Classifier": AdaBoostClassifier(tree.DecisionTreeClassifier(), random_state = 42)
     
 } 
 

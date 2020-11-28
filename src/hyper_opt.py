@@ -23,26 +23,19 @@ from sklearn.ensemble import AdaBoostClassifier
 
 kfold = StratifiedKFold(n_splits= config.FOLDS) #must be equal to FOLDS
 
-# X,y = make_classification(n_samples= 100, n_features= 25)
-
-
-# X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2, random_state = 42)
 
 h_file = pd.read_csv(config.HYPER_FILE)
+
+#Mini dataset
+# y = h_file.pop(h_file.iloc[:, config.TARGET].name).iloc[:50]
+# X = h_file.iloc[:50, :]
+
+#Normal dataset
 y = h_file.pop(h_file.iloc[:, config.TARGET].name)
 X = h_file
+dict = {"Algorithm":[], "Best Score":[]}
+report = pd.DataFrame(dict)
 
-
-RFC = tree.DecisionTreeClassifier(criterion= "gini", random_state = 42)
-gsRFC = GridSearchCV(RFC, param_grid = model_dispatcher.DTG_PARAMS, cv = kfold, scoring = "accuracy",
-                    n_jobs = 1, verbose = 1)
-
-gsRFC.fit(X, y)
-    
-RFC_best = gsRFC.best_estimator_
-
-#Best score
-print("Best score:", gsRFC.best_score_)
 
 for model in model_dispatcher.models:
     print(model_dispatcher.models[model])
@@ -52,8 +45,10 @@ for model in model_dispatcher.models:
                     n_jobs = 1, verbose = 1)
     gs_mod.fit(X, y)
     gs_best = gs_mod.best_estimator_
-    print("Best score:", gs_mod.best_score_)
+    # print("Best score:", gs_mod.best_score_)
+    report  = report.append({"Algorithm":model, 
+        "Best Score":gs_mod.best_score_},
+         ignore_index = True)
+print(report.sort_values(by = "Best Score", ascending = False))
 
 
-#for model in model_dispatcher.model_param.keys():
-    #print(model_dispatcher.model_param[model])
