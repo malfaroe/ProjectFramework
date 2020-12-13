@@ -1,14 +1,33 @@
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier,GradientBoostingClassifier, AdaBoostClassifier
-models =    {
+from sklearn.linear_model import LogisticRegression 
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.neighbors import KNeighborsClassifier 
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis 
+from sklearn.naive_bayes import GaussianNB 
+from sklearn.svm import SVC 
+from sklearn.ensemble import AdaBoostClassifier 
+from sklearn.ensemble import GradientBoostingClassifier 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import ExtraTreesClassifier
+
+MODELS =    {
     "decision_tree_gini":tree.DecisionTreeClassifier(criterion= "gini", random_state = 42),
     "decision_tree_entropy": tree.DecisionTreeClassifier(criterion= "entropy",  random_state = 42),
-    "Random Forest": RandomForestClassifier(random_state = 42),
-    "Extra Trees": ExtraTreesClassifier(random_state = 42),
-    "Gradient Boosting":GradientBoostingClassifier(random_state = 42),
-    "AdaBoost Classifier": AdaBoostClassifier(tree.DecisionTreeClassifier(), random_state = 42)
+    "RandomForest": RandomForestClassifier(random_state = 42),
+    "ExtraTrees": ExtraTreesClassifier(random_state = 42),
+    "GradientBoosting":GradientBoostingClassifier(random_state = 42),
+    "AdaBoostClassifier": AdaBoostClassifier(tree.DecisionTreeClassifier(), random_state = 42)
     
 } 
+
+LINEAR_MODELS = {'LogisticRegression': LogisticRegression(max_iter = 10000),
+'LinearDiscriminant': LinearDiscriminantAnalysis(),
+"KNearest_Neighbour": KNeighborsClassifier(),
+'CART': DecisionTreeClassifier(),
+'GaussianNB': GaussianNB(),
+'SVM': SVC()
+}
 
 
 
@@ -53,10 +72,10 @@ ADA_PARAMS = {"base_estimator__criterion": ["gini", "entropy"],
 model_param =   {
     "decision_tree_gini": DTG_PARAMS,
     "decision_tree_entropy": DTE_PARAMS,
-    "Random Forest": RF_PARAMS,
-    "Extra Trees": XT_PARAMS,
-    "Gradient Boosting":GBC_PARAMS,
-    "AdaBoost Classifier": ADA_PARAMS
+    "RandomForest": RF_PARAMS,
+    "ExtraTrees": XT_PARAMS,
+    "GradientBoosting":GBC_PARAMS,
+    "AdaBoostClassifier": ADA_PARAMS
     
 } 
 
